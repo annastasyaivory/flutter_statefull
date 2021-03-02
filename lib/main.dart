@@ -8,6 +8,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  //widget dinamis dapat dirubah kapanpun
 // This widget is the root of your application.
   @override
   _MyAppState createState() => _MyAppState();
@@ -40,7 +41,8 @@ class _MyAppState extends State<MyApp> {
             title: Text("Konverter Suhu"),
           ),
           body: Container(
-            margin: EdgeInsets.all(8),
+            margin:
+                EdgeInsets.all(8), //memberikan margin kepada semua value LTRB
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

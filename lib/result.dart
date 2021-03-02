@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
+  //widget statis
   const Result({
     Key key,
     @required double kelvin,
@@ -21,7 +22,8 @@ class Result extends StatelessWidget {
           children: <Widget>[
             Text("Suhu Dalam Kelvin", style: TextStyle(fontSize: 17)),
             Text(
-              _kelvin.toStringAsFixed(0),
+              _kelvin.toStringAsFixed(
+                  0), //mengkonversi variabel dengan brp angka di belakang koma
               style: TextStyle(height: 1.5, fontSize: 40),
             )
           ],
@@ -30,7 +32,8 @@ class Result extends StatelessWidget {
           children: <Widget>[
             Text("Suhu Dalam Reamor", style: TextStyle(fontSize: 17)),
             Text(
-              _reamor.toStringAsFixed(0),
+              _reamor.toStringAsFixed(
+                  0), //mengkonversi variabel dengan brp angka di belakang koma
               style: TextStyle(height: 1.5, fontSize: 40),
             )
           ],
