@@ -15,11 +15,14 @@ class Input extends StatelessWidget {
     return TextFormField(
       decoration:
           InputDecoration(hintText: "Masukkan Suhu Dalam Celcius"), //hint text
+      // ignore: deprecated_member_use
       inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly
-      ], //validasi hanya angka
+        // ignore: deprecated_member_use
+        BlacklistingTextInputFormatter(new RegExp('[\\-|\\ ]'))
+      ],
       controller: inputController,
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.numberWithOptions(
+          decimal: true), //tampilan input keyboard khusus angka
     );
   }
 }
