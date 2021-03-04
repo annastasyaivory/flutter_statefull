@@ -6,9 +6,9 @@ class Input extends StatelessWidget {
   const Input({
     //const : inisiasi variabel immutable yang mana nilai variabelnya sudah diketahui pada saat kompilasi berjalan
     Key key,
-    @required this.etInput,
+    @required this.inputController,
   }) : super(key: key);
-  final TextEditingController etInput;
+  final TextEditingController inputController;
   //final : inisiasi variabel immutable yang mana nilai variabelnya sudah atau belum diketahui pada saat kompilasi berjalan
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,8 @@ class Input extends StatelessWidget {
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly
       ], //validasi hanya angka
-      controller: etInput,
-      keyboardType: TextInputType.number, //tampilan input keyboard khusus angka
+      controller: inputController,
+      keyboardType: TextInputType.number,
     );
   }
 }
