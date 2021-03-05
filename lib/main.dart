@@ -22,7 +22,9 @@ class _MyAppState extends State<MyApp> {
   double _kelvin = 0;
   double _reamor = 0;
 
-  var listItem = ["Kelvin", "Reamur"];
+  var listItem = ["Kelvin", "Reamur"]; //list of object buat map
+  //list mulai dari index ke 0
+  //list.length – 1 adalah index nilai terakhir dari sebuat list
   String _newValue = "Kelvin";
   double _result = 0;
 
@@ -31,12 +33,13 @@ class _MyAppState extends State<MyApp> {
 
   void perhitunganSuhu() {
     setState(() {
-      _inputUser = double.parse(inputController.text);
+      _inputUser = double.parse(inputController
+          .text); //penerimaan input user berupa string diubah ke double (parse)
       if (_newValue == "Kelvin")
         _result = _inputUser + 273;
-      else
+      else //reamur
         _result = (4 / 5) * _inputUser;
-      listViewItem.add("$_newValue : $_result");
+      listViewItem.add("$_newValue : $_result"); //penambahan list untuk riwayat
     });
   }
 
@@ -54,6 +57,8 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Container(
           margin: EdgeInsets.all(8),
+          //margin LTRB , klo hanya satu pake only atau valuenya 0
+          //seperti line 69
           child: Column(
             children: [
               Input(inputController: inputController),
@@ -68,6 +73,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               Expanded(
+                //memperluas children column di ruang yang tersissa
                 child: RiwayatKonversi(listViewItem: listViewItem),
               ),
             ],
@@ -80,17 +86,26 @@ class _MyAppState extends State<MyApp> {
   DropdownButton<String> buildDropdownButton() {
     return DropdownButton<String>(
       items: listItem.map((String value) {
+        //penambahan di list riwayat
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
         );
       }).toList(),
       value: _newValue,
-      onChanged: (String changeValue) {
-        setState(() {
-          _newValue = changeValue;
-        });
-      },
+      onChanged: dropdownOnChanged, //extract method dibawah
     );
+  }
+
+  void dropdownOnChanged(String changeValue) {
+    //terima parameter dari onchanged
+    //tipenya string karena baris 83 dn 81
+    //changevalue dpt dari dropdownonChanged
+    setState(() {
+      //mulai build lagii
+      _newValue = changeValue;
+      perhitunganSuhu(); //behaviour button pada dropdown
+      //jadi setelah dropdown diubah akan lgsng tambah ke riwayat
+    });
   }
 }

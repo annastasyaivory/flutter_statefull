@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   const Result({
-    Key key,
+    Key key, //key untuk id
     @required this.result,
   }) : super(key: key);
   final double result;
